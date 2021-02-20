@@ -1,5 +1,3 @@
-# CRUD-APP
-
-CRUD operations using Nodejs React and MySQL
+# CRUD-API
 
 Nodejs REST Api with MySQL
