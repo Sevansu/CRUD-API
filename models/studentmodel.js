@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Student = sequelize.define("cruddb", {
+  const Student = sequelize.define("student_details", {
     first_name: {
       type: Sequelize.STRING
     },
