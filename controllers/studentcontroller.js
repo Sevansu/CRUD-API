@@ -88,3 +88,94 @@ exports.create = (req, res) => {
             });
         });
 };
+
+exports.findAll = (req, res) => {
+    Student.findAll()
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving all Students."
+            });
+        });
+};
+
+exports.findOne = (req, res) => {
+    const id = req.params.id;
+
+    Student.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error retrieving Student with id=" + id
+            });
+        });
+};
+
+exports.update = (req, res) => {
+    const id = req.params.id;
+
+    Student.update(req.body, {
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Student was updated successfully."
+                });
+            } else {
+                res.send({
+                    message: `Cannot update Student with id=${id}. Maybe Student was not found or req.body is empty!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Error updating Student with id=" + id
+            });
+        });
+};
+
+exports.delete = (req, res) => {
+    const id = req.params.id;
+
+    Student.destroy({
+        where: { id: id }
+    })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Student was deleted successfully!"
+                });
+            } else {
+                res.send({
+                    message: `Cannot delete Student with id=${id}. Maybe Student was not found!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete Student with id=" + id
+            });
+        });
+};
+
+exports.deleteAll = (req, res) => {
+    Student.destroy({
+        where: {},
+        truncate: false
+    })
+        .then(nums => {
+            res.send({ message: `${nums} Students were deleted successfully!` });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while removing all Students."
+            });
+        });
+};
