@@ -10,4 +10,4 @@ MySQL db manipulation using sequelize API
 
 ![postman testing](https://github.com/Sevansu/CRUD-API/blob/master/demoimages/3.png)
 
-![phpmyadmin db](https://github.com/Sevansu/CRUD-API/blob/master/demoimages/3.png)
+![phpmyadmin db](https://github.com/Sevansu/CRUD-API/blob/master/demoimages/4.png)
